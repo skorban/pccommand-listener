@@ -14,10 +14,11 @@ Required Dev Tools
 * Git
 * Git Bash
 * 7-Zip
+* GNU coreutils
 
 The PATH environment must contain these: 
 
-%programfiles%\nodejs;%programfiles%\Git\cmd;%programfiles%\Git\bin;%programfiles%\7-Zip
+%programfiles%\nodejs;%programfiles%\Git\cmd;%programfiles%\Git\bin;%programfiles%\7-Zip;C:\Program Files (x86)\GnuWin32\bin
 
 Getting Started
 ===============
