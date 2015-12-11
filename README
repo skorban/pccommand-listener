@@ -1,0 +1,54 @@
+Description
+===========
+
+pccommand-listener is a Windows program written with Node.js and node-webkit. 
+
+A Node.js HTTP server is used to receive and execute Windows command strings sent from Genie's STRPCCMD 
+implementation or Profound UI's 'runPCCommand()' JavaScript API. node-webkit is used to provide native 
+Windows UI features such as a system tray icon/menu, notifications, etc.
+
+Required Dev Tools
+==================
+
+* Node.js
+* Git
+* Git Bash
+* 7-Zip
+
+The PATH environment must contain these: 
+
+%programfiles%\nodejs;%programfiles%\Git\cmd;%programfiles%\Git\bin;%programfiles%\7-Zip
+
+Getting Started
+===============
+
+I recommend using Git Bash shell, but Windows shell also works.
+
+To clone the repo: 
+
+  git clone "/p/Product Development/pccommand-listener.git" && cd pccommand-listener
+  
+To install required Node.js modules/packages (i.e. node-webkit):
+
+  npm install && npm test
+  
+To run the program:
+
+  npm start
+  
+To end the program: 
+
+  Use the system tray menu option.
+  
+To see errors while coding:
+
+  For the main window, edit the package.json and set the 'window' -> 'show' property to true.
+  For the config window, set the 'toolbar' property to true in the 'window.open()' call in 'index.js'.
+  
+  This causes the browser window to display and you can use the toolbar to open the console.  
+  
+To build the distribution package:
+  
+  Edit the package.json and update the version number, then:
+  
+  npm build

@@ -1,0 +1,68 @@
+#!/usr/bin/env node
+
+var fs = require("fs");
+var path = require("path");
+
+const appDir = path.dirname(__dirname);
+
+const manifest_fields = [
+  "main",
+  "name",
+  "nodejs",
+  "node-main",
+  "single-instance",
+  "window",
+  "webkit",
+  "user-agent",
+  "node-remote",
+  "chromium-args",
+  "js-flags",
+  "inject-js-start",
+  "inject-js-end",
+  "additional_trust_anchors",
+  "snapshot",
+  "dom_storage_quota",
+  "no-edit-menu",
+  "description",
+  "version",
+  "keywords",
+  "author",
+  "maintainers",
+  "contributors",
+  "bugs",
+  "licenses",
+  "repositories"
+];
+
+fs.readFile(appDir + "/package.json", null, function(error, data) {
+
+  if (error)
+    die(error.message);
+  var pkg;
+  try {
+  
+    pkg = JSON.parse(data);
+  
+  }
+  catch (error) {
+  
+    die(error.message);
+  
+  }
+  Object.keys(pkg).forEach(function(key) {
+  
+    if (manifest_fields.indexOf(key) == -1)
+      delete pkg[key];
+  
+  });
+  process.stdout.write(JSON.stringify(pkg, null, 2));
+  process.exit(0);
+    
+});
+
+function die(message) {
+
+  console.log(message);
+  process.exit(1);
+
+}

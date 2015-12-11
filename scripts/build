@@ -1,0 +1,21 @@
+#!/bin/sh
+
+APP_DIR="`readlink -f $0 | xargs dirname | xargs dirname`"
+BUILD_DIR="$APP_DIR/build"
+NW_DIR="$APP_DIR/node_modules/nw/nwjs"
+
+"$APP_DIR/scripts/clean"
+
+cp -p "$NW_DIR/d3dcompiler_47.dll" "$BUILD_DIR"
+cp -p "$NW_DIR/icudtl.dat" "$BUILD_DIR"
+cp -p "$NW_DIR/libEGL.dll" "$BUILD_DIR"
+cp -p "$NW_DIR/libGLESv2.dll" "$BUILD_DIR"
+cp -p "$NW_DIR/nw.pak" "$BUILD_DIR"
+
+"$APP_DIR/scripts/gen_manifest" > "$TMP/package.json"
+
+7z a -tzip "$TMP/pccommand-listener.nw" "$TMP/package.json" "$APP_DIR/LICENSE" "$APP_DIR/app"
+cat "$NW_DIR/nw.exe" "$TMP/pccommand-listener.nw" > "$BUILD_DIR/pccommand-listener.exe"
+rm -f "$TMP/package.json"
+rm -f "$TMP/pccommand-listener.nw"
+npm run sign

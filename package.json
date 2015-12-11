@@ -1,0 +1,30 @@
+{
+  "name": "pccommand-listener",
+  "version": "1.0.0",
+  "description": "PC-side Listener for STRPCCMD Support",
+  "main": "app/index.html",
+  "dependencies": {
+    "nw": "^0.12.3"
+  },
+  "scripts": {
+    "test": "bash -c \"scripts/build && build/pccommand-listener\"",
+    "start": "nw",
+    "clean": "bash -c \"scripts/clean\"",
+    "build": "bash -c \"scripts/build\"",
+    "sign": "scripts\\sign.bat"
+  },
+  "window": {
+    "show": false
+  },
+  "author": {
+    "name": "David Russo",
+    "email": "drusso@profoundlogic.com",
+    "url": "http://www.profoundlogic.com"
+  },
+  "licenses": [
+    {
+      "type": "LicenseRef-LICENSE"
+    }
+  ],
+  "license": "LicenseRef-LICENSE"
+}
